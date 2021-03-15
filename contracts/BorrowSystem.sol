@@ -1,10 +1,10 @@
 pragma solidity ^0.5.4;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/math/SafeMath.sol";
+// import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+// import "@openzeppelin/contracts/math/SafeMath.sol";
 
-contract BorrowSystem is ERC20 {
-    using SafeMath for uint256;
+contract BorrowSystem {
+    // using SafeMath for uint256;
 
     address public owner;
 

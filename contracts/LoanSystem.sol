@@ -10,7 +10,7 @@ contract LoanSystem {
       owner = msg.sender;
   }
   
-  function addData(bytes32 memory document) public {
+  function addData(bytes32 document) public {
     address[] storage owners = ownerMap[document];
     for( uint i = 0; i < owners.length; i++){
       if(owners[i] == msg.sender)
@@ -29,11 +29,11 @@ contract LoanSystem {
     return loanMap[person].length;
   }
 
-  function getOwnerCount(bytes32 memory hash) public view returns(uint) {
+  function getOwnerCount(bytes32 hash) public view returns(uint) {
     return ownerMap[hash].length;
   }
   
-  function getOwnerByPosition(bytes32 memory hash, uint index) public view returns(address) {
+  function getOwnerByPosition(bytes32 hash, uint index) public view returns(address) {
     return ownerMap[hash][index];
   }
   
