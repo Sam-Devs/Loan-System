@@ -147,9 +147,9 @@ contract BorrowSystem {
                 if (proposalList[numI].state == ProposalState.ACCEPTED) {
                     uint256 original = proposalList[numI].amount;
                     uint256 rate = proposalList[numI].rate;
-                    uint256 now = block.timestamp;
+                    uint256 blockTime = block.timestamp;
                     uint256 interest =
-                        (original * rate * (now - time)) /
+                        (original * rate * (blockTime - time)) /
                             (365 * 24 * 60 * 60 * 100);
                     finalamount += interest;
                     finalamount += original;
@@ -160,7 +160,7 @@ contract BorrowSystem {
     }
 
     function repayLoan(uint256 loanId) public payable {
-        uint256 now = block.timestamp;
+        uint256 blockTime = block.timestamp;
         uint256 toBePaid = getRepayValue(loanId);
         uint256 time = loanList[loanId].startDate;
         uint256 paid = msg.value;
@@ -173,7 +173,7 @@ contract BorrowSystem {
                     uint256 original = proposalList[numI].amount;
                     uint256 rate = proposalList[numI].rate;
                     uint256 interest =
-                        (original * rate * (now - time)) /
+                        (original * rate * (blockTime - time)) /
                             (365 * 24 * 60 * 60 * 100);
                     uint256 finalamount = interest + original;
                     proposalList[numI].lender.transfer(finalamount);
